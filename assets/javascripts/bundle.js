@@ -1,3 +1,5 @@
+'use strict';
+
 function colorize(inputField, type, error) {
   if (type === 'normal') {
     inputField.css({
@@ -43,7 +45,7 @@ function shorten(val) {
     timeout: 5000,
 
     success: function(data, status) {
-      if (status == 'success') {
+      if (status === 'success') {
 
         colorize(inputField, 'normal');
         inputField.val(data.url.short);
@@ -56,7 +58,7 @@ function shorten(val) {
     },
 
     error: function(e) {
-      if (e.status == 400) {
+      if (e.status === 400) {
         colorize(inputField, 'error', 'Please enter a correctly formatted url...');
       } else {
         colorize(inputField, 'warning', "We're facing some problems. Please try again later...");
@@ -86,8 +88,6 @@ $(function() {
       $('.copy-btn').hide();
     }
   });
-
-
 
   console.log('Hola, Hacker! Welcome to the JavaScript console.\nThe itty.be project is actually open source.\nCheck it out at http://github.com/codeblooded/ittybe.');
 });
